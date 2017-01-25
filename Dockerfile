@@ -28,4 +28,6 @@ RUN chown -R www-data:www-data /var/www
 
 RUN service dovecot stop
 
+EXPOSE 80 443
+
 CMD ./start.sh

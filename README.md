@@ -1,5 +1,4 @@
-# POSTFIX ADMIN DOCKER
-
+# POSTFIXADMIN DOCKER
 
 ##### RUN:
 ```
@@ -7,8 +6,9 @@ docker run -i -t \
 	-p 80:80 \
 	--network="nginx-proxy" \
 	-e SQL_USER=root \
-	-e SQL_PW=my-secret-pw \
-	-e SQL_HOST=meinesql \
+	-e SQL_PW=my-root-password \
+	-e SQL_USR_PW=my-vmail-database-pw \
+	-e SQL_HOST= mydb \
 	-e ADMIN_MAIL=postmaster@example.com \
 	-e DOMAIN=example.com \
 	-e FQDN=mail.example.com \

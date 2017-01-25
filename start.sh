@@ -49,9 +49,6 @@ do
 done
 echo "database on"
 
-SQL_PW="NO_PW"
-SQL_USR_PW="NO_PW"
-SETUP_PW=="NO_PW"
 
 service nginx start
 service nginx reload
@@ -60,7 +57,12 @@ service php7.0-fpm start
 #if this is the first run we need to setup tables etc.
 
 echo "initalize database:"
-mysql -u root -p$SQL_PW -h $SQL_HOST < init_db_sub.sql
+cat /init_db_sub.sql | mysql -u root -p$SQL_PW -h $SQL_HOST
+
+SQL_PW="NO_PW"
+SQL_USR_PW="NO_PW"
+SETUP_PW="NO_PW"
+
 
 wget http://postfixadmin.tutomail.de/setup.php > /dev/null
 
