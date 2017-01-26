@@ -13,7 +13,7 @@ docker run -i -t \
 	-e DOMAIN=example.com \
 	-e FQDN=mail.example.com \
 	-e SMTP_SERVER=smtp.example.com \
-	-e SETUP_PW="SETUP_PW"
+	-e SETUP_PW="SETUP_PW" \
 	 number13/postfixadmin
 ```
 
