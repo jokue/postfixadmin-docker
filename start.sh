@@ -9,7 +9,6 @@ cd /
 rm -rf /config_files_sub
 cp -r /config_files /config_files_sub
 
-
 #configure nginx
 echo "configure nginx"
 sed -i "s/{{SERVER_NAME}}/$SRV_NAME/g" /config_files_sub/default
@@ -42,22 +41,20 @@ chown -R www-data:www-data /var/www
 chmod -R g+w /var/www/html
 
 #wait for database to start up
-echo "wait for database"
-while !(mysqladmin -h $SQL_HOST -u $SQL_USER -p$SQL_PW ping)
+echo "wait for database - ${SQL_HOST}"
+while !(mysqladmin -h $SQL_HOST -u root -p$SQL_PW ping)
 do
-    sleep 1
+    sleep 10
+    echo "~ waiting ~"
 done
-echo "database on"
+echo "database online"
 
+echo "initalize database:"
+cat /init_db_sub.sql | mysql -u root -p$SQL_PW -h $SQL_HOST
 
 service nginx start
 service nginx reload
 service php7.0-fpm start
-
-#if this is the first run we need to setup tables etc.
-
-echo "initalize database:"
-cat /init_db_sub.sql | mysql -u root -p$SQL_PW -h $SQL_HOST
 
 SQL_PW="NO_PW"
 SQL_USR_PW="NO_PW"
