@@ -1,5 +1,7 @@
 # POSTFIXADMIN DOCKER
 
+**Don't run this in production! This container is in an early stage of development!**
+
 ##### RUN:
 ```
 docker run -i -t \
