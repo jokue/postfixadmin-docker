@@ -53,6 +53,7 @@ service nginx start
 service nginx reload
 service php7.2-fpm restart
 
+
 #if this is the first run we need to setup tables etc.
 
 echo "initalize database:"
