@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo "[POSTFIXADMIN_DOCKER] init db..."
+
 #init db
 sed -i "s/{{SQL_USR_PW}}/$SQL_USR_PW/g" /init_db.sql
 
@@ -11,7 +13,7 @@ cp -r /config_files /config_files_sub
 
 
 #configure nginx
-echo "configure nginx"
+echo "[POSTFIXADMIN_DOCKER] configure nginx"
 sed -i "s/{{SERVER_NAME}}/$SRV_NAME/g" /config_files_sub/default
 cp /config_files_sub/default /etc/nginx/sites-available/default
 
@@ -31,9 +33,9 @@ echo "SALT:${SALT}|END"
 
 TEST=$(echo -n "${SALT}:${SETUP_PW}" | sha1sum)
 SETUP_HASH_1=${TEST:0:-3}
-echo "HASHED PW WITH SALT:${SETUP_HASH_1}|END"
+echo "[POSTFIXADMIN_DOCKER]HASHED PW WITH SALT:${SETUP_HASH_1}|END"
 SETUP_HASH=${SALT}:${SETUP_HASH_1}
-echo "SETUP_HASH:${SETUP_HASH}|END"
+echo "[POSTFIXADMIN_DOCKER]SETUP_HASH:${SETUP_HASH}|END"
 sed -i "s/{{SETUP_HASH}}/$SETUP_HASH/g" /config_files_sub/config.local.php
 
 cp /config_files_sub/config.local.php /var/www/html/config.local.php
@@ -42,12 +44,12 @@ chown -R www-data:www-data /var/www
 chmod -R g+w /var/www/html
 
 #wait for database to start up
-echo "wait for database"
+echo "[POSTFIXADMIN_DOCKER]wait for database"
 while !(mysqladmin -h $SQL_HOST -u $SQL_USER -p$SQL_PW ping)
 do
     sleep 1
 done
-echo "database on"
+echo "[POSTFIXADMIN_DOCKER] database online"
 
 service nginx start
 service nginx reload
@@ -56,8 +58,8 @@ service php7.2-fpm start
 
 #if this is the first run we need to setup tables etc.
 
-echo "initalize database:"
-mysql -u root -p$SQL_PW -h $SQL_HOST 'root' < init_db.sql
+echo "[POSTFIXADMIN_DOCKER] initalize database:"
+mysql -u root -p$SQL_PW -h $SQL_HOST < init_db.sql
 
 
 /bin/bash
