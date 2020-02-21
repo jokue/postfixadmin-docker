@@ -63,3 +63,4 @@ SETUP_PW="NO_PW"
 wget --no-check-certificate https://postfixadmin.tutomail.de/setup.php > /dev/null
 
 tail -f /dev/null
+

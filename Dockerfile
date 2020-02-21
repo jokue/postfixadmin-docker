@@ -17,7 +17,7 @@ ADD config_files config_files
 ADD init_db.sql init_db.sql
 RUN chmod +x start.sh
 
-ADD https://downloads.sourceforge.net/project/postfixadmin/postfixadmin/postfixadmin-3.2/postfixadmin-3.2.tar.gz /
+ADD https://netix.dl.sourceforge.net/project/postfixadmin/postfixadmin/postfixadmin-3.2/postfixadmin-3.2.tar.gz /
 RUN tar -xvzf postfixadmin-3.2.tar.gz
 RUN rm postfixadmin-3.2.tar.gz
 RUN rm -rf /var/www/html
