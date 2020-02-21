@@ -60,6 +60,6 @@ SQL_PW="NO_PW"
 SQL_USR_PW="NO_PW"
 SETUP_PW="NO_PW"
 
-wget https://postfixadmin.tutomail.de/setup.php > /dev/null
+wget --no-check-certificate https://postfixadmin.tutomail.de/setup.php > /dev/null
 
 tail -f /dev/null
