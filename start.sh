@@ -51,7 +51,7 @@ echo "database on"
 
 service nginx start
 service nginx reload
-service php7.2-fpm restart
+service php7.2-fpm start
 
 
 #if this is the first run we need to setup tables etc.
