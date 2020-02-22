@@ -19,7 +19,7 @@ $CONF['default_aliases'] = array (
 
 $CONF['vacation_domain'] = 'autoreply.{{DOMAIN}}';
 $CONF['footer_text'] = 'Return to {{DOMAIN}}';
-$CONF['footer_link'] = 'http://{{DOMAIN}}';
+$CONF['footer_link'] = 'https://{{DOMAIN}}';
 
 $CONF['smtp_server'] = '{{SMTP_SERVER}}';
 $CONF['smtp_port'] = '25';
