@@ -45,7 +45,7 @@ chmod -R g+w /var/www/html
 
 #wait for database to start up
 echo "[POSTFIXADMIN_DOCKER]wait for database"
-while !(mysqladmin -h $SQL_HOST -u $SQL_USER -p $SQL_USR_PW ping)
+while !(mysqladmin -h $SQL_HOST -u root -p$SQL_PW ping)
 do
     sleep 1
 done
