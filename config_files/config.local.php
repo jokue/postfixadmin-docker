@@ -3,7 +3,7 @@ $CONF['database_type'] = 'mysqli';
 $CONF['database_user'] = 'postfix';
 $CONF['database_password'] = '{{SQL_USR_PW}}';
 $CONF['database_name'] = 'vmail';
-$CONF['database_host'] = '{{MYSQL_HOST}}';
+$CONF['database_host'] = '{{SQL_HOST}}';
 
 $CONF['admin_email'] = '{{ADMIN_MAIL}}';
 $CONF['encrypt'] = 'dovecot:SSHA512';
