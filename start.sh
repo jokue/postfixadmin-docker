@@ -11,13 +11,12 @@ rm -rf /config_files_sub
 cp -r /config_files /config_files_sub
 
 
-
 #configure nginx
 echo "[POSTFIXADMIN_DOCKER] configure nginx"
 sed -i "s/{{SERVER_NAME}}/$SRV_NAME/g" /config_files_sub/default
 cp /config_files_sub/default /etc/nginx/sites-available/default
 
-sed -i "s/{{SQL_DB_PW}}/$SQL_USR_PW/g" /config_files_sub/config.local.php
+sed -i "s/{{SQL_USR_PW}}/$SQL_USR_PW/g" /config_files_sub/config.local.php
 sed -i "s/{{SQL_HOST}}/$SQL_HOST/g" /config_files_sub/config.local.php
 sed -i "s/{{ADMIN_MAIL}}/$ADMIN_MAIL/g" /config_files_sub/config.local.php
 sed -i "s/{{DOMAIN}}/$DOMAIN/g" /config_files_sub/config.local.php
