@@ -40,8 +40,8 @@ sed -i "s/{{SETUP_HASH}}/$SETUP_HASH/g" /config_files_sub/config.local.php
 
 cp /config_files_sub/config.local.php /var/www/html/config.local.php
 
-mkdir -p /srv/postfixadmin/templates_c
-chown -R www-data /srv/postfixadmin/templates_c
+mkdir -p /var/www/html/templates_c
+chown -R www-data /var/www/html/templates_c
 
 chown -R www-data:www-data /var/www
 chmod -R g+w /var/www/html
